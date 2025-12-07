@@ -7,9 +7,11 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("The secret number is: {secret_number}");
+    let mut guesses: u32 = 0;
 
     loop {
+        guesses = guesses + 1;
+
         println!("Please input your guess.");
 
         let mut guess = String::new();
@@ -30,6 +32,7 @@ fn main() {
             Ordering::Greater => println!("Too Big!"),
             Ordering::Equal => {
                 println!("You win!");
+                println!("You guessed this many times: {guesses}");
                 break;
             }
         }
